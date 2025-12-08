@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserva tu cita - Clínica Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold">
+                        D
+                    </div>
+                    <div>
+                        <p class="font-semibold">Clínica Derm Demo</p>
+                        <p class="text-xs text-slate-500">Dermatología · Estética · Láser</p>
+                    </div>
+                </div>
+                <span class="text-xs md:text-sm text-slate-500">
+                    Demo de automatización con n8n
+                </span>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <main class="flex-1">
+            <section class="max-w-4xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10 items-center">
+                <!-- Copy -->
+                <div class="space-y-5">
+                    <h1 class="text-3xl md:text-4xl font-bold leading-tight">
+                        Reserva tu cita en <span class="text-sky-600">menos de 1 minuto</span>
+                    </h1>
+                    <p class="text-slate-600">
+                        Completa este formulario y recibirás una confirmación de tu cita de forma
+                        automática. Nuestro equipo se pondrá en contacto contigo por teléfono o WhatsApp.
+                    </p>
+
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>✅ Notificación instantánea al equipo de la clínica</li>
+                        <li>✅ Confirmación automática al paciente</li>
+                        <li>✅ Datos listos para CRM / Excel / Google Sheets</li>
+                    </ul>
+
+                    <div class="p-3 rounded-xl bg-sky-50 border border-sky-100 text-xs text-sky-700">
+                        Esta página es una <strong>demo real</strong>: cada envío se registra en n8n
+                        y dispara el flujo de automatización.
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="bg-white shadow-md rounded-2xl p-6 border border-slate-100">
+                    <h2 class="text-lg font-semibold mb-4">Datos para la cita</h2>
+
+                    <form id="leadForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1" for="name">
+                                Nombre completo
+                            </label>
+                            <input id="name" name="name" type="text" required
+                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                placeholder="Ej. María López" />
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1" for="email">
+                                    Email
+                                </label>
+                                <input id="email" name="email" type="email" required
+                                    class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                    placeholder="Ej. nombre@correo.com" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1" for="phone">
+                                    Teléfono
+                                </label>
+                                <input id="phone" name="phone" type="tel" required
+                                    class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                    placeholder="Ej. 653 123 456" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1" for="treatment">
+                                Tratamiento de interés
+                            </label>
+                            <select id="treatment" name="treatment" required
+                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-white">
+                                <option value="">Selecciona una opción</option>
+                                <option value="acne">Acné</option>
+                                <option value="rosacea">Rosácea</option>
+                                <option value="manchas-laser">Manchas / Láser</option>
+                                <option value="relleno-labios">Relleno de labios</option>
+                                <option value="antiaging">Tratamientos anti-aging</option>
+                                <option value="ginecoestetica">Ginecoestética</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1" for="message">
+                                Comentarios (opcional)
+                            </label>
+                            <textarea id="message" name="message" rows="3"
+                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                placeholder="Cuéntanos brevemente qué te gustaría tratar."></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn"
+                            class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white text-sm font-medium py-2.5 hover:bg-sky-700 transition disabled:opacity-60 disabled:cursor-not-allowed">
+                            Enviar solicitud de cita
+                        </button>
+
+                        <p id="formStatus" class="text-xs mt-2 h-4"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-100">
+            <div class="max-w-4xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
+                <p class="text-xs text-slate-500">
+                    Demo creada con <span class="font-semibold">Netlify</span> + <span class="font-semibold">n8n</span>.
+                </p>
+                <p class="text-xs text-slate-400">
+                    Tu solución de automatización para clínicas en Madrid.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 👉 PON AQUÍ TU WEBHOOK DE N8N
+        const WEBHOOK_URL = "https://TU-DOMINIO-DE-N8N/webhook/ID_DE_TU_WEBHOOK";
+
+        const form = document.getElementById("leadForm");
+        const statusEl = document.getElementById("formStatus");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            statusEl.textContent = "";
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Enviando...";
+
+            const formData = new FormData(form);
+            const payload = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                phone: formData.get("phone"),
+                treatment: formData.get("treatment"),
+                message: formData.get("message"),
+                source: "netlify-landing-demo",
+                submittedAt: new Date().toISOString(),
+            };
+
+            try {
+                const res = await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!res.ok) {
+                    throw new Error("Error al llamar al webhook");
+                }
+
+                statusEl.textContent = "✅ Hemos recibido tu solicitud. Te contactaremos en breve.";
+                statusEl.className = "text-xs mt-2 text-emerald-600";
+                form.reset();
+            } catch (err) {
+                console.error(err);
+                statusEl.textContent = "❌ Ha ocurrido un error. Inténtalo de nuevo en unos minutos.";
+                statusEl.className = "text-xs mt-2 text-red-600";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar solicitud de cita";
+            }
+        });
+    </script>
+</body>
+
+</html>
