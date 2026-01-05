@@ -2,191 +2,238 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reserva tu cita - Clínica Demo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva tu cita - Clínica Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    input[type="tel"] {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input::-ms-clear,
+    input::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
-    <div class="min-h-screen flex flex-col">
-        <!-- Header -->
-        <header class="bg-white shadow-sm">
-            <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <div class="w-9 h-9 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold">
-                        D
-                    </div>
-                    <div>
-                        <p class="font-semibold">Clínica Derm Demo</p>
-                        <p class="text-xs text-slate-500">Dermatología · Estética · Láser</p>
-                    </div>
-                </div>
-                <span class="text-xs md:text-sm text-slate-500">
-                    Demo de automatización con n8n
-                </span>
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+      <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold">
+            D
+          </div>
+          <div>
+            <p class="font-semibold">Clínica Derm Demo</p>
+            <p class="text-xs text-slate-500">Dermatología · Estética · Láser</p>
+          </div>
+        </div>
+        <span class="text-xs md:text-sm text-slate-500">Demo n8n</span>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="flex-1">
+      <section class="max-w-4xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10 items-center">
+
+        <!-- Copy -->
+        <div class="space-y-5">
+          <h1 class="text-3xl md:text-4xl font-bold leading-tight">
+            Reserva tu cita en <span class="text-sky-600">menos de 1 minuto</span>
+          </h1>
+          <p class="text-slate-600">
+            Completa este formulario y recibirás confirmación automática.
+          </p>
+
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li>✅ Notificación instantánea al equipo</li>
+            <li>✅ Confirmación automática por WhatsApp</li>
+            <li>✅ Datos listos para CRM / Sheets</li>
+          </ul>
+
+          <div class="p-3 rounded-xl bg-sky-50 border border-sky-100 text-xs text-sky-700">
+            Demo real conectada a n8n.
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="bg-white shadow-md rounded-2xl p-6 border border-slate-100">
+          <h2 class="text-lg font-semibold mb-4">Datos para la cita</h2>
+
+          <form id="leadForm" class="space-y-4">
+
+            <!-- Nombre -->
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1" for="name">
+                Nombre completo
+              </label>
+              <input id="name" name="name" type="text" required
+                class="w-full h-11 rounded-xl border border-slate-200 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                placeholder="Ej. María López" />
             </div>
-        </header>
 
-        <!-- Main -->
-        <main class="flex-1">
-            <section class="max-w-4xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10 items-center">
-                <!-- Copy -->
-                <div class="space-y-5">
-                    <h1 class="text-3xl md:text-4xl font-bold leading-tight">
-                        Reserva tu cita en <span class="text-sky-600">menos de 1 minuto</span>
-                    </h1>
-                    <p class="text-slate-600">
-                        Completa este formulario y recibirás una confirmación de tu cita de forma
-                        automática. Nuestro equipo se pondrá en contacto contigo por teléfono o WhatsApp.
-                    </p>
-
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li>✅ Notificación instantánea al equipo de la clínica</li>
-                        <li>✅ Confirmación automática al paciente</li>
-                        <li>✅ Datos listos para CRM / Excel / Google Sheets</li>
-                    </ul>
-
-                    <div class="p-3 rounded-xl bg-sky-50 border border-sky-100 text-xs text-sky-700">
-                        Esta página es una <strong>demo real</strong>: cada envío se registra en n8n
-                        y dispara el flujo de automatización.
-                    </div>
-                </div>
-
-                <!-- Form -->
-                <div class="bg-white shadow-md rounded-2xl p-6 border border-slate-100">
-                    <h2 class="text-lg font-semibold mb-4">Datos para la cita</h2>
-
-                    <form id="leadForm" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1" for="name">
-                                Nombre completo
-                            </label>
-                            <input id="name" name="name" type="text" required
-                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                                placeholder="Ej. María López" />
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1" for="email">
-                                    Email
-                                </label>
-                                <input id="email" name="email" type="email" required
-                                    class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                                    placeholder="Ej. nombre@correo.com" />
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1" for="phone">
-                                    Teléfono
-                                </label>
-                                <input id="phone" name="phone" type="tel" required
-                                    class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                                    placeholder="Ej. 653 123 456" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1" for="treatment">
-                                Tratamiento de interés
-                            </label>
-                            <select id="treatment" name="treatment" required
-                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-white">
-                                <option value="">Selecciona una opción</option>
-                                <option value="acne">Acné</option>
-                                <option value="rosacea">Rosácea</option>
-                                <option value="manchas-laser">Manchas / Láser</option>
-                                <option value="relleno-labios">Relleno de labios</option>
-                                <option value="antiaging">Tratamientos anti-aging</option>
-                                <option value="ginecoestetica">Ginecoestética</option>
-                                <option value="otros">Otros</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1" for="message">
-                                Comentarios (opcional)
-                            </label>
-                            <textarea id="message" name="message" rows="3"
-                                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                                placeholder="Cuéntanos brevemente qué te gustaría tratar."></textarea>
-                        </div>
-
-                        <button type="submit" id="submitBtn"
-                            class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white text-sm font-medium py-2.5 hover:bg-sky-700 transition disabled:opacity-60 disabled:cursor-not-allowed">
-                            Enviar solicitud de cita
-                        </button>
-
-                        <p id="formStatus" class="text-xs mt-2 h-4"></p>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="border-t border-slate-100">
-            <div class="max-w-4xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
-                <p class="text-xs text-slate-500">
-                    Demo creada con <span class="font-semibold">Netlify</span> + <span class="font-semibold">n8n</span>.
-                </p>
-                <p class="text-xs text-slate-400">
-                    Tu solución de automatización para clínicas en Madrid.
-                </p>
+            <!-- Email (línea aparte) -->
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1" for="email">
+                Email
+              </label>
+              <input id="email" name="email" type="email" required
+                class="w-full h-11 rounded-xl border border-slate-200 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                placeholder="Ej. nombre@correo.com" />
             </div>
-        </footer>
-    </div>
 
-    <script>
-        // 👉 PON AQUÍ TU WEBHOOK DE N8N
+            <!-- Teléfono (línea aparte + full width) -->
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">
+                Teléfono (con prefijo)
+              </label>
+
+              <div class="flex gap-2 items-stretch">
+                <select id="countryCode" name="countryCode" required
+                  class="w-32 h-11 rounded-xl border border-slate-200 px-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                  <option value="+34" selected>🇪🇸 +34</option>
+                  <option value="+351">🇵🇹 +351</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+39">🇮🇹 +39</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+57">🇨🇴 +57</option>
+                  <option value="+593">🇪🇨 +593</option>
+                  <option value="+212">🇲🇦 +212</option>
+                </select>
+
+                <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required
+                  class="flex-1 h-11 min-w-0 rounded-xl border border-slate-200 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                  placeholder="Ej. 653123456" />
+              </div>
+
+              <p class="text-[11px] text-slate-500 mt-1">
+                Escribe el número sin espacios.
+              </p>
+            </div>
+
+            <!-- Tratamiento -->
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1" for="treatment">
+                Tratamiento de interés
+              </label>
+              <select id="treatment" name="treatment" required
+                class="w-full h-11 rounded-xl border border-slate-200 px-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                <option value="">Selecciona una opción</option>
+                <option value="acne">Acné</option>
+                <option value="rosacea">Rosácea</option>
+                <option value="manchas-laser">Manchas / Láser</option>
+                <option value="relleno-labios">Relleno de labios</option>
+                <option value="antiaging">Tratamientos anti-aging</option>
+                <option value="ginecoestetica">Ginecoestética</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+
+            <!-- Comentarios -->
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1" for="message">
+                Comentarios (opcional)
+              </label>
+              <textarea id="message" name="message" rows="3"
+                class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                placeholder="Cuéntanos brevemente qué te gustaría tratar."></textarea>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit" id="submitBtn"
+              class="w-full h-11 inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white text-sm font-medium hover:bg-sky-700 transition disabled:opacity-60 disabled:cursor-not-allowed">
+              Enviar solicitud de cita
+            </button>
+
+            <p id="formStatus" class="text-xs mt-2 h-4"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-100">
+      <div class="max-w-4xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
+        <p class="text-xs text-slate-500">
+          Demo creada con <span class="font-semibold">Netlify</span> + <span class="font-semibold">n8n</span>.
+        </p>
+        <p class="text-xs text-slate-400">Automatización para clínicas.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // 👉 PON AQUÍ TU WEBHOOK DE N8N
     const WEBHOOK_URL = "https://n8n.decotea.es/webhook/dermaniac-web";
 
-        const form = document.getElementById("leadForm");
-        const statusEl = document.getElementById("formStatus");
-        const submitBtn = document.getElementById("submitBtn");
+    const form = document.getElementById("leadForm");
+    const statusEl = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
 
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            statusEl.textContent = "";
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Enviando...";
+    // Limpia el phone mientras escriben (opcional, mejora UX)
+    const phoneInput = document.getElementById("phone");
+    phoneInput.addEventListener("input", () => {
+      phoneInput.value = phoneInput.value.replace(/[^\d]/g, "");
+    });
 
-            const formData = new FormData(form);
-            const payload = {
-                name: formData.get("name"),
-                email: formData.get("email"),
-                phone: formData.get("phone"),
-                treatment: formData.get("treatment"),
-                message: formData.get("message"),
-                source: "netlify-landing-demo",
-                submittedAt: new Date().toISOString(),
-            };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-            try {
-                const res = await fetch(WEBHOOK_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(payload),
-                });
+      statusEl.textContent = "";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
 
-                if (!res.ok) {
-                    throw new Error("Error al llamar al webhook");
-                }
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const countryCode = form.countryCode.value; // ej: "+34"
+      const phone = form.phone.value.trim();       // ej: "604319181"
+      const treatment = form.treatment.value;
+      const message = form.message.value.trim();
 
-                statusEl.textContent = "✅ Hemos recibido tu solicitud. Te contactaremos en breve.";
-                statusEl.className = "text-xs mt-2 text-emerald-600";
-                form.reset();
-            } catch (err) {
-                console.error(err);
-                statusEl.textContent = "❌ Ha ocurrido un error. Inténtalo de nuevo en unos minutos.";
-                statusEl.className = "text-xs mt-2 text-red-600";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Enviar solicitud de cita";
-            }
+      const payload = {
+        name,
+        email,
+        countryCode,
+        phone,
+        treatment,
+        message,
+        source: "netlify-landing-demo",
+        submittedAt: new Date().toISOString()
+      };
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
         });
-    </script>
+
+        if (!res.ok) throw new Error("Error al llamar al webhook");
+
+        statusEl.textContent = "✅ Hemos recibido tu solicitud. Te contactaremos en breve.";
+        statusEl.className = "text-xs mt-2 text-emerald-600";
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = "❌ Ha ocurrido un error. Inténtalo de nuevo en unos minutos.";
+        statusEl.className = "text-xs mt-2 text-red-600";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar solicitud de cita";
+      }
+    });
+  </script>
 </body>
 
 </html>
